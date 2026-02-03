@@ -8,7 +8,7 @@ const DATA_DIR = join(__dirname, "..", "data");
 const OUTPUT_FILE = join(DATA_DIR, "papers.json");
 
 // ---------------------------------------------------------------------------
-// Prompt — derived from SKILL.md (hardcoded to 7-day timeframe)
+// Prompt — hardcoded to 14-day timeframe, deployed weekly
 // ---------------------------------------------------------------------------
 const SCHOLAR_URL =
   "https://scholar.google.com/scholar?hl=iw&as_sdt=0%2C5&inst=1200643855431153338&q=lior+klein&oq=";
@@ -25,7 +25,7 @@ You MUST output your final answer in a specific JSON format (described below). B
 
 2. **Identify 5-10 key research topics** from the profile (e.g., sensors, magnetoresistance, noise, magnetic materials, signal processing, biomedical sensing).
 
-3. **Search for recent publications** (last 7 days) using those topics. Target academic sources:
+3. **Search for recent publications** (last 14 days) using those topics. Target academic sources:
    - arxiv.org
    - ieee.org
    - sciencedirect.com
@@ -59,7 +59,7 @@ You MUST output your final answer in a specific JSON format (described below). B
 %%%JSON_END%%%
 
 Important rules:
-- Return exactly 10 papers (or fewer if you truly cannot find 10 relevant ones from the last 7 days).
+- Return exactly 10 papers (or fewer if you truly cannot find 10 relevant ones from the last 14 days).
 - Every paper MUST have a working URL.
 - Prefer arXiv, IEEE, Nature, and Science Direct links.
 - Dates should be as precise as possible (YYYY-MM-DD preferred, YYYY-MM acceptable).
@@ -82,7 +82,7 @@ async function callAnthropic() {
       {
         role: "user",
         content:
-          "Find the top 10 publications from the last 7 days that are most relevant to the researcher's Google Scholar profile. Search thoroughly across multiple academic sources and return the results in the specified JSON format.",
+          "Find the top 10 publications from the last 14 days that are most relevant to the researcher's Google Scholar profile. Search thoroughly across multiple academic sources and return the results in the specified JSON format.",
       },
     ],
   });
@@ -206,7 +206,7 @@ async function main() {
 
     const output = {
       generatedAt: new Date().toISOString(),
-      timeframe: "7 days",
+      timeframe: "14 days",
       scholarUrl: SCHOLAR_URL,
       preSummary: preSummary || undefined,
       ...enriched,

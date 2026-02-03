@@ -1,0 +1,14 @@
+name: Weekly Render Deploy
+
+on:
+  schedule:
+    # Every Saturday at 08:00 UTC (10:00 Israel time)
+    - cron: "0 8 * * 6"
+  workflow_dispatch: # Allow manual trigger from GitHub UI
+
+jobs:
+  trigger-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger Render deploy hook
+        run: curl -s "${{ secrets.RENDER_DEPLOY_HOOK_URL }}"
