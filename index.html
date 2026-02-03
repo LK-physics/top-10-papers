@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Top 10 Papers</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>Top 10 Research Papers</h1>
+    <p class="subtitle">Recent publications relevant to my research profile &mdash; updated daily</p>
+  </header>
+
+  <main>
+    <!-- Status / loading -->
+    <div id="status-bar" class="hidden">
+      <div class="spinner"></div>
+      <span id="status-text">Loading papers...</span>
+    </div>
+
+    <!-- Error banner -->
+    <div id="error-banner" class="hidden"></div>
+
+    <!-- Last updated -->
+    <div id="meta-bar" class="hidden">
+      <span id="last-updated"></span>
+      <span id="timeframe-badge"></span>
+    </div>
+
+    <!-- Summary section -->
+    <section id="summary-section" class="hidden">
+      <h2>Trends &amp; Insights</h2>
+      <div id="summary-trends"></div>
+      <div id="summary-recommendations"></div>
+    </section>
+
+    <!-- Paper cards -->
+    <section id="papers-section">
+      <div id="papers-list"></div>
+    </section>
+
+    <!-- Empty state -->
+    <div id="empty-state" class="hidden">
+      <p>No papers available yet. The daily update runs at 08:00 Israel time.</p>
+    </div>
+  </main>
+
+  <footer>
+    Powered by Claude Opus 4.5 &middot; Updated daily via GitHub Actions
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,13 @@
+{
+  "name": "top-10-papers",
+  "version": "1.0.0",
+  "type": "module",
+  "private": true,
+  "description": "Daily top 10 research papers relevant to my Google Scholar profile",
+  "scripts": {
+    "generate": "node scripts/generate.js"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.39.0"
+  }
+}
